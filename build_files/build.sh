@@ -11,7 +11,7 @@ set -ouex pipefail
 
 # this installs a package from fedora repos
 dnf5 -y install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-dnf5 -y config-manager --enable fedora-cisco-openh264
+dnf5 config-manager setopt fedora-cisco-openh264.enabled=1
 sed -i.bak '/^name=RPM Fusion for Fedora \$releasever - Nonfree$/,/^$/ {
     /^gpgkey=file:\/\/\/etc\/pki\/rpm-gpg\/RPM-GPG-KEY-rpmfusion-nonfree-fedora-\$releasever$/a\
 exclude=akmod-nvidia* kmod-nvidia* xorg-x11-drv-nvidia* nvidia-*
@@ -32,4 +32,4 @@ grubby --update-kernel=ALL --args="i915.enable_guc=2 i915.enable_fbc=1"
 
 #### Example for enabling a System Unit File
 
-systemctl enable podman.socket
+#systemctl enable podman.socket
