@@ -22,8 +22,7 @@ dnf5 -y config-manager addrepo --from-repofile=https://negativo17.org/repos/fedo
 dnf5 -y swap ffmpeg-free ffmpeg --allowerasing
 dnf5 -y group install multimedia --setopt="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
 dnf5 -y group install sound-and-video
-dnf5 -y install intel-media-driver rpmdevtools akmods
-grubby --update-kernel=ALL --args="i915.enable_guc=2 i915.enable_fbc=1"
+dnf5 -y install intel-media-driver
 # Use a COPR Example:
 #
 # dnf5 -y copr enable ublue-os/staging
