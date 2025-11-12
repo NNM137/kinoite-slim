@@ -34,7 +34,8 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/log \
     --mount=type=tmpfs,dst=/tmp \
     /ctx/build.sh
-    
+RUN rpm-ostree kargs --append=i915.enable_guc=2 --append=i915.enable_fbc=1
+
 ### LINTING
 ## Verify final image and contents are correct.
 RUN bootc container lint
